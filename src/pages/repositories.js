@@ -1,5 +1,7 @@
 import React from "react";
 
+import { CardsList } from "../components/style";
+import RepositoryCard from "../components/repository";
 class Repositories extends React.Component {
   state = {
     reposList: []
@@ -19,6 +21,7 @@ class Repositories extends React.Component {
         starsCount: repo.stargazers_count,
         issuesCount: repo.open_issues,
         owner: repo.owner.login,
+        ownerUrl: repo.owner.html_url,
         avatar: repo.owner.avatar_url,
         createdAt: repo.created_at
       };
@@ -35,20 +38,11 @@ class Repositories extends React.Component {
     const { reposList } = this.state;
     if (reposList) {
       return (
-        <div>
+        <CardsList>
           {reposList.map(repoItem => (
-            <div key={repoItem.id}>
-              <img src={repoItem.avatar} alt={repoItem.owner} />
-              <h1>{repoItem.name}</h1>
-              <p>{repoItem.description}</p>
-              <span>{repoItem.starsCount}</span>
-              <span>{repoItem.issuesCount}</span>
-              <span>
-                created {repoItem.createdAt} by {repoItem.owner}
-              </span>
-            </div>
+            <RepositoryCard key={repoItem.id} {...repoItem} />
           ))}
-        </div>
+        </CardsList>
       );
     }
   }

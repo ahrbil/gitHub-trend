@@ -6,3 +6,9 @@ export const Container = styled.div`
   margin: 0 auto;
   padding: 1rem;
 `;
+
+export const CardsList = styled.div`
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-row-gap: 25px;
+`;
