@@ -13,6 +13,7 @@ import {
   Bold,
   RepoIssues
 } from "./style";
+import { getTimeInterval } from "../../utils";
 
 const RepositoryCard = ({
   avatar,
@@ -23,30 +24,34 @@ const RepositoryCard = ({
   owner,
   ownerUrl,
   createdAt
-}) => (
-  <CardContainer>
-    <Avatar>
-      <AvatarImg src={avatar} alt={name} />
-    </Avatar>
-    <CardContent>
-      <RepoName>{name}</RepoName>
-      <RepoDescription>{description}</RepoDescription>
-      <RepoStatics>
-        <RepoStars>
-          Stars
-          <Bold>{starsCount}</Bold>
-        </RepoStars>
-        <RepoIssues>
-          Issues
-          <Bold>{issuesCount}</Bold>
-        </RepoIssues>
-        <span>
-          Submitted {createdAt} by <a href={ownerUrl}>{owner}</a>
-        </span>
-      </RepoStatics>
-    </CardContent>
-  </CardContainer>
-);
+}) => {
+  const timeInterval = getTimeInterval(createdAt);
+  return (
+    <CardContainer>
+      <Avatar>
+        <AvatarImg src={avatar} alt={name} />
+      </Avatar>
+      <CardContent>
+        <RepoName>{name}</RepoName>
+        <RepoDescription>{description}</RepoDescription>
+        <RepoStatics>
+          <RepoStars>
+            Stars
+            <Bold>{starsCount}</Bold>
+          </RepoStars>
+          <RepoIssues>
+            Issues
+            <Bold>{issuesCount}</Bold>
+          </RepoIssues>
+          <span>
+            {`Submitted ${timeInterval} by `}
+            <a href={ownerUrl}>{owner}</a>
+          </span>
+        </RepoStatics>
+      </CardContent>
+    </CardContainer>
+  );
+};
 
 export default RepositoryCard;
 

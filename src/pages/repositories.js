@@ -2,13 +2,16 @@ import React from "react";
 
 import { CardsList } from "../components/style";
 import RepositoryCard from "../components/repository";
+import { getDateBefore } from "../utils";
+
 class Repositories extends React.Component {
   state = {
     reposList: []
   };
 
   getRepositories = async () => {
-    let url = `https://api.github.com/search/repositories?q=created:>2018-12-01&sort=stars&order=desc`;
+    const date = getDateBefore(30);
+    let url = `https://api.github.com/search/repositories?q=created:>${date}&sort=stars&order=desc`;
     const results = await fetch(url);
     const resultsToJson = await results.json();
     const reposList = resultsToJson.items.map(repo => {
