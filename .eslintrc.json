@@ -1,0 +1,22 @@
+{
+  "extends": ["airbnb", "plugin:prettier/recommended"],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": [
+      "warn",
+      {
+        "printWidth": 80,
+        "tabWidth": 2,
+        "useTabs": false,
+        "semi": true,
+        "singleQuote": false,
+        "bracketSpacing": true,
+        "trailingComma": "all"
+      }
+    ],
+    "no-unused-vars": "warn",
+    "react/jsx-filename-extension": 0,
+    "jsx-a11y/accessible-emoji": "warn",
+    "import/prefer-default-export": 0
+  }
+}
