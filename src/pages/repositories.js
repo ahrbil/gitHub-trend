@@ -20,7 +20,7 @@ class Repositories extends React.Component {
       return {
         id: repo.id,
         name: repo.name,
-        description: repo.description,
+        description: repo.description ? repo.description : "",
         starsCount: repo.stargazers_count,
         issuesCount: repo.open_issues,
         owner: repo.owner.login,
@@ -32,9 +32,18 @@ class Repositories extends React.Component {
     return reposList;
   };
 
+  handleScroll = () => {
+    console.log("windowHeight", window.innerHeight);
+  };
+
   componentDidMount = async () => {
     const reposList = await this.getRepositories();
     this.setState({ reposList });
+    window.addEventListener("scroll", this.handleScroll);
+  };
+
+  componentWillUnmount = () => {
+    window.removeEventListener("scroll", this.handleScroll);
   };
 
   render() {

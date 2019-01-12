@@ -55,12 +55,15 @@ const RepositoryCard = ({
 
 export default RepositoryCard;
 
+RepositoryCard.defaultProps = {
+  description: ""
+};
 RepositoryCard.propTypes = {
   avatar: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  starsCount: PropTypes.string.isRequired,
-  issuesCount: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  starsCount: PropTypes.number.isRequired,
+  issuesCount: PropTypes.number.isRequired,
   owner: PropTypes.string.isRequired,
   ownerUrl: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired
