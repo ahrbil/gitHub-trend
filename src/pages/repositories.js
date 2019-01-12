@@ -98,8 +98,9 @@ class Repositories extends React.Component {
               </span>
             </Loader>
           )}
-          {/*  */}
-          {!hasMore && <Loader>You got all the results</Loader>}
+          {!hasMore && (
+            <span style={{ textAlign: "center" }}>You got all the results</span>
+          )}
         </CardsList>
       );
     }
