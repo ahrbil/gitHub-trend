@@ -38,7 +38,8 @@ class Repositories extends React.Component {
         };
       });
     // check if we reach the limit of pages
-    const hasMore = page < 2;
+    // gitHub gives us first 1000 results that means last page is page 34
+    const hasMore = page < 34;
     // adding new repos to the state and setting loading to false
     this.setState({
       loading: false,
