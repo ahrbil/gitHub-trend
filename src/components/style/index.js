@@ -12,3 +12,9 @@ export const CardsList = styled.div`
   grid-template-rows: 1fr;
   grid-row-gap: 25px;
 `;
+
+export const Loader = styled.span`
+  display: block;
+  height: 40px;
+  margin: 0 auto;
+`;
